@@ -1,460 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dud's Burgs | Cardápio Online</title>
 <style>
-:root {
-  --black:#070707;
-  --card:#151515;
-  --gold:#d4af37;
-  --gold2:#ffe08a;
-  --white:#fff;
-  --muted:#cfcfcf;
-  --red:#b91c1c;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--black);color:var(--white);font-family:Arial,Helvetica,sans-serif}
-.hero{
-  min-height:520px;
-  display:flex;
-  align-items:center;
-  background:linear-gradient(90deg,rgba(0,0,0,.97),rgba(0,0,0,.7),rgba(0,0,0,.18)),url('duds_box.png') center/cover;
-  padding:28px 18px;
-  border-bottom:1px solid rgba(212,175,55,.4);
-}
-.hero-inner{width:100%;max-width:1180px;margin:auto}
-.badge{display:inline-block;background:rgba(212,175,55,.14);border:1px solid rgba(212,175,55,.45);color:var(--gold2);padding:9px 14px;border-radius:999px;font-weight:900}
-h1{font-size:clamp(42px,8vw,86px);line-height:.92;margin:22px 0 12px;max-width:820px}
-h1 span{color:var(--gold2)}
-.lead{font-size:20px;max-width:680px;color:#eee;line-height:1.45}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.hero-actions a{text-decoration:none;padding:15px 18px;border-radius:14px;font-weight:900}
-.primary{background:var(--gold);color:#111}
-.secondary{background:#1e1e1e;color:#fff;border:1px solid #555}
-.promo{max-width:1180px;margin:-50px auto 20px;padding:0 18px}
-.promo-card{background:linear-gradient(135deg,#2a1d03,#111);border:1px solid rgba(255,224,138,.55);border-radius:24px;padding:20px;display:flex;justify-content:space-between;gap:15px;align-items:center;box-shadow:0 18px 50px rgba(0,0,0,.55)}
-.promo-card h2{margin:0;color:var(--gold2)}
-.promo-card p{margin:7px 0 0;color:#ddd}
-.wrap{max-width:1180px;margin:auto;padding:18px;display:grid;grid-template-columns:1fr 380px;gap:18px}
-.menu,.cart,.reviews{background:rgba(21,21,21,.96);border:1px solid rgba(212,175,55,.25);border-radius:24px;padding:18px}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-.tabs button{background:#242424;color:#fff;border:1px solid #333;border-radius:999px;padding:11px 15px;cursor:pointer;font-weight:900}
-.tabs button.active{background:var(--gold);color:#111}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-.product{background:#0f0f0f;border:1px solid #2c2c2c;border-radius:22px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.35)}
-.product img{width:100%;height:215px;object-fit:cover;display:block}
-.p-content{padding:14px}
-.p-content span{color:var(--gold2);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.7px}
-.p-content h3{margin:8px 0 6px;font-size:23px}
-.p-content p{color:var(--muted);line-height:1.35;min-height:58px}
-.p-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.p-bottom strong{font-size:22px;color:var(--gold2)}
-button{border:0;border-radius:12px;padding:12px 14px;font-weight:900;cursor:pointer}
-.p-bottom button,.finish{background:var(--gold);color:#111}
-.cart{position:sticky;top:14px;height:max-content}
-.cart h2{color:var(--gold2);margin-top:0}
-.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #333;padding:10px 0}
-.cart-item button{background:#333;color:#fff;padding:6px 10px}
-label{display:block;color:var(--gold2);font-weight:900;margin-top:12px}
-input,select,textarea{width:100%;background:#090909;border:1px solid #3b3b3b;color:#fff;padding:12px;border-radius:12px;margin-top:6px;font-size:15px}
-.total{font-size:30px;font-weight:900;color:var(--gold2);text-align:center;margin:18px 0}
-.finish,.clear{width:100%;font-size:16px}
-.clear{background:var(--red);color:#fff;margin-top:10px}
-.note{font-size:13px;color:#bbb;line-height:1.4;margin-top:12px}
-.reviews-wrap{max-width:1180px;margin:0 auto 20px;padding:0 18px}
-.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.review{background:#0d0d0d;border:1px solid #333;border-radius:18px;padding:14px;color:#eee}
-footer{text-align:center;color:#aaa;padding:28px 18px 40px}
-.float{position:fixed;right:16px;bottom:16px;background:#25d366;color:#111;text-decoration:none;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 12px 30px rgba(0,0,0,.45);z-index:9}
-@media(max-width:920px){
-  .wrap{grid-template-columns:1fr}
-  .cart{position:static}
-  .promo-card{display:block}
-}
+:root{--bg:#080808;--card:#151515;--gold:#e2b82f;--gold2:#ffd866;--text:#fff;--muted:#c9c9c9;--line:rgba(226,184,47,.28);--danger:#d92d20;--green:#25d366}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at top,#3b2a05 0,#080808 34%,#000 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif}.hero{position:relative;min-height:560px;display:flex;align-items:center;overflow:hidden;padding:34px 18px 54px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.72),rgba(0,0,0,.30)),url('combo_box.jpeg') center/cover;filter:saturate(1.12);transform:scale(1.02)}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,#080808 92%)}.hero-inner{position:relative;z-index:1;width:min(1180px,100%);margin:auto}.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(226,184,47,.13);color:var(--gold2);padding:11px 16px;border-radius:999px;font-weight:900}.hero h1{font-size:clamp(43px,7vw,92px);line-height:.94;margin:28px 0 14px;letter-spacing:-2px;max-width:820px}.hero h1 span{color:var(--gold2)}.hero p{font-size:clamp(18px,2.1vw,25px);line-height:1.35;max-width:700px;color:#eee}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{border:0;border-radius:14px;padding:15px 21px;font-size:17px;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}.primary{background:var(--gold);color:#111}.dark{background:#202020;color:#fff;border:1px solid #444}.promo-card{position:relative;z-index:2;max-width:1180px;margin:-58px auto 26px;padding:0 18px}.promo-box{display:grid;grid-template-columns:220px 1fr auto;gap:18px;align-items:center;background:linear-gradient(135deg,rgba(226,184,47,.22),rgba(0,0,0,.96));border:1px solid var(--line);border-radius:28px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.55)}.promo-box img{width:220px;height:160px;object-fit:cover;border-radius:22px;border:1px solid rgba(255,255,255,.16)}.promo-title small{display:inline-block;background:var(--danger);color:#fff;border-radius:999px;padding:7px 10px;font-weight:900;margin-bottom:8px}.promo-title h2{margin:0;color:var(--gold2);font-size:32px}.promo-title p{margin:8px 0 0;color:#eee;line-height:1.4}.price{text-align:right}.price .old{text-decoration:line-through;color:#aaa;font-size:18px}.price .new{font-size:43px;font-weight:1000;color:var(--gold2)}.price button{background:var(--gold);color:#111;border:0;border-radius:16px;padding:14px 18px;font-weight:1000;cursor:pointer;font-size:16px}.wrap{display:grid;grid-template-columns:1fr 380px;gap:20px;max-width:1180px;margin:0 auto;padding:18px}.menu,.cart{background:rgba(21,21,21,.94);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 10px 36px rgba(0,0,0,.38)}.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}.tabs button{background:#262626;color:#fff;border:1px solid #383838;border-radius:999px;padding:11px 16px;cursor:pointer;font-weight:800}.tabs button.active{background:var(--gold);color:#111}.product{display:flex;justify-content:space-between;gap:14px;padding:17px 0;border-bottom:1px solid #303030}.product h3{margin:0 0 6px;color:var(--gold2)}.product p{margin:0 0 9px;color:var(--muted);line-height:1.38}.product strong{font-size:19px}.product button,.finish{background:var(--gold);color:#111;border:0;border-radius:13px;padding:12px 14px;font-weight:900;cursor:pointer}.special{background:linear-gradient(135deg,rgba(226,184,47,.16),rgba(255,216,102,.04));border-radius:18px;padding-left:14px;padding-right:14px;border:1px solid rgba(226,184,47,.33)}.cart{position:sticky;top:14px;height:max-content}.cart h2{margin-top:0;color:var(--gold2)}.cart-item{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #333;padding:10px 0}.cart-item button{background:#333;color:#fff;border:0;border-radius:10px;padding:6px 10px;cursor:pointer}label{display:block;margin-top:12px;color:var(--gold2);font-weight:800}input,select,textarea{width:100%;background:#0b0b0b;border:1px solid #3a3a3a;color:#fff;padding:12px;border-radius:12px;margin-top:6px;font-size:15px}.total{font-size:30px;font-weight:1000;color:var(--gold2);margin:18px 0;text-align:center}.finish{width:100%;font-size:17px}.clear{width:100%;background:var(--danger);color:#fff;margin-top:10px;border:0;border-radius:13px;padding:12px 14px;font-weight:900}.note{color:var(--muted);font-size:13px;line-height:1.35;margin-top:12px}footer{text-align:center;color:#aaa;padding:24px}.whats-fixed{position:fixed;right:18px;bottom:18px;background:var(--green);color:#061b0d;padding:15px 18px;border-radius:999px;text-decoration:none;font-weight:1000;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:5}@media(max-width:900px){.hero{min-height:520px}.promo-box{grid-template-columns:1fr}.promo-box img{width:100%;height:220px}.price{text-align:left}.wrap{grid-template-columns:1fr}.cart{position:static}.whats-fixed{left:18px;right:18px;text-align:center;justify-content:center}.product{align-items:flex-start}.product button{min-width:110px}.hero h1{letter-spacing:-1px}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <div class="badge">🍔 Dud's Burgs • Uberaba MG</div>
-    <h1>O burguer artesanal que dá <span>água na boca.</span></h1>
-    <p class="lead">Escolha seus lanches, combos e acompanhamentos. Monte seu pedido no carrinho e finalize direto no WhatsApp.</p>
-    <div class="hero-actions">
-      <a class="primary" href="#cardapio">Ver cardápio</a>
-      <a class="secondary" href="https://instagram.com/duds_burgs" target="_blank">Instagram @duds_burgs</a>
-    </div>
-  </div>
-</header>
-
-<section class="promo">
-  <div class="promo-card">
-    <div>
-      <h2>🔥 Destaque da casa: Dud's Box</h2>
-      <p>Combo perfeito pra dividir: lanches, batata, onion rings e molhos especiais.</p>
-    </div>
-    <strong style="font-size:30px;color:var(--gold2)">R$ 70,00</strong>
-  </div>
+<section class="hero">
+ <div class="hero-inner">
+  <div class="tag">🍔 Dud's Burgs • Uberaba MG</div>
+  <h1>O burger artesanal que dá <span>água na boca.</span></h1>
+  <p>Escolha seus lanches, combos e acompanhamentos. Monte seu pedido no carrinho e finalize direto no WhatsApp.</p>
+  <div class="buttons"><a class="btn primary" href="#cardapio">Ver cardápio</a><a class="btn dark" href="https://www.instagram.com/duds_burgs" target="_blank">Instagram @duds_burgs</a></div>
+ </div>
 </section>
-
+<div class="promo-card">
+ <div class="promo-box">
+  <img src="combo_box.jpeg" alt="Box do Sucesso Dud's Burgs">
+  <div class="promo-title"><small>🔥 VOLTOU POR PEDIDO DE VOCÊS</small><h2>Box do Sucesso</h2><p>2 burgers artesanais + batata com cheddar e bacon + onion rings crocante + molhos. Promoção válida somente hoje!</p></div>
+  <div class="price"><div class="old">R$ 70,00</div><div class="new">R$ 59,90</div><button onclick="addToCart('Box do Sucesso - Promoção', 59.90); location.href='#pedido';">Adicionar promoção</button></div>
+ </div>
+</div>
 <main class="wrap" id="cardapio">
-  <section class="menu">
-    <div class="tabs">
-      <button class="active" onclick="filterProducts('Todos', this)">Todos</button>
-      <button onclick="filterProducts('Lanches', this)">Lanches</button>
-      <button onclick="filterProducts('Acompanhamentos', this)">Acompanhamentos</button>
-      <button onclick="filterProducts('Combos', this)">Combos</button>
-    </div>
-    <div class="products">
-    <article class="product" data-cat="Lanches">
-      <img src="original.jpeg" alt="Original">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Original</h3>
-        <p>Pão, hambúrguer bovino, queijo prato, alface, tomate e maionese da casa.</p>
-        <div class="p-bottom">
-          <strong>R$ 20.00</strong>
-          <button onclick="addItem('Original', 20.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="poster.png" alt="Chiken Burg">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Chiken Burg</h3>
-        <p>Hambúrguer de frango, queijo, alface, tomate e maionese da casa.</p>
-        <div class="p-bottom">
-          <strong>R$ 20.00</strong>
-          <button onclick="addItem('Chiken Burg', 20.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="poster.png" alt="Burg Simples">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Burg Simples</h3>
-        <p>Pão, hambúrguer, cheddar e molho da casa.</p>
-        <div class="p-bottom">
-          <strong>R$ 15.00</strong>
-          <button onclick="addItem('Burg Simples', 15.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="duds_especial.jpeg" alt="Dud&#x27;s Especial">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Dud&#x27;s Especial</h3>
-        <p>Blend 150g, presunto, mussarela, ovo, bacon, alface, tomate e molho especial.</p>
-        <div class="p-bottom">
-          <strong>R$ 27.00</strong>
-          <button onclick="addItem('Dud&#x27;s Especial', 27.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="poster.png" alt="Dama Smash">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Dama Smash</h3>
-        <p>Dois smash burgers, queijo americano e molho da casa.</p>
-        <div class="p-bottom">
-          <strong>R$ 37.00</strong>
-          <button onclick="addItem('Dama Smash', 37.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="poster.png" alt="Duplo Burg">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Duplo Burg</h3>
-        <p>Dois hambúrgueres, cheddar, cebola caramelizada, bacon e maionese caseira.</p>
-        <div class="p-bottom">
-          <strong>R$ 40.00</strong>
-          <button onclick="addItem('Duplo Burg', 40.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="triplo_burg.jpeg" alt="Triplo Burg">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Triplo Burg</h3>
-        <p>Três hambúrgueres, queijo, bacon e molho especial da casa.</p>
-        <div class="p-bottom">
-          <strong>R$ 45.00</strong>
-          <button onclick="addItem('Triplo Burg', 45.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="costela_suprema.jpeg" alt="Costela Suprema">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Costela Suprema</h3>
-        <p>Hambúrguer, costela desfiada, barbecue, queijo e muito sabor.</p>
-        <div class="p-bottom">
-          <strong>R$ 40.00</strong>
-          <button onclick="addItem('Costela Suprema', 40.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="onion_rings_burg.jpeg" alt="Onion Rings Burg">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Onion Rings Burg</h3>
-        <p>Hambúrguer, cheddar, onion rings, bacon e barbecue.</p>
-        <div class="p-bottom">
-          <strong>R$ 35.00</strong>
-          <button onclick="addItem('Onion Rings Burg', 35.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Lanches">
-      <img src="trindade_bacon.jpeg" alt="Trindade do Bacon">
-      <div class="p-content">
-        <span>Lanches</span>
-        <h3>Trindade do Bacon</h3>
-        <p>Hambúrguer especial com queijo, onion rings e bacon em destaque.</p>
-        <div class="p-bottom">
-          <strong>R$ 35.00</strong>
-          <button onclick="addItem('Trindade do Bacon', 35.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Acompanhamentos">
-      <img src="poster.png" alt="Batata 100g">
-      <div class="p-content">
-        <span>Acompanhamentos</span>
-        <h3>Batata 100g</h3>
-        <p>Batata frita crocante.</p>
-        <div class="p-bottom">
-          <strong>R$ 10.00</strong>
-          <button onclick="addItem('Batata 100g', 10.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Acompanhamentos">
-      <img src="poster.png" alt="Batata 300g">
-      <div class="p-content">
-        <span>Acompanhamentos</span>
-        <h3>Batata 300g</h3>
-        <p>Porção grande de batata frita.</p>
-        <div class="p-bottom">
-          <strong>R$ 25.00</strong>
-          <button onclick="addItem('Batata 300g', 25.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Acompanhamentos">
-      <img src="poster.png" alt="Batata Cheddar e Bacon 150g">
-      <div class="p-content">
-        <span>Acompanhamentos</span>
-        <h3>Batata Cheddar e Bacon 150g</h3>
-        <p>Batata frita com cheddar cremoso e bacon.</p>
-        <div class="p-bottom">
-          <strong>R$ 15.00</strong>
-          <button onclick="addItem('Batata Cheddar e Bacon 150g', 15.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Acompanhamentos">
-      <img src="poster.png" alt="Batata Cheddar e Bacon 300g">
-      <div class="p-content">
-        <span>Acompanhamentos</span>
-        <h3>Batata Cheddar e Bacon 300g</h3>
-        <p>Porção grande com cheddar cremoso e bacon.</p>
-        <div class="p-bottom">
-          <strong>R$ 35.00</strong>
-          <button onclick="addItem('Batata Cheddar e Bacon 300g', 35.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Acompanhamentos">
-      <img src="poster.png" alt="Onion Rings 150g">
-      <div class="p-content">
-        <span>Acompanhamentos</span>
-        <h3>Onion Rings 150g</h3>
-        <p>Anéis de cebola crocantes.</p>
-        <div class="p-bottom">
-          <strong>R$ 15.00</strong>
-          <button onclick="addItem('Onion Rings 150g', 15.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Combos">
-      <img src="duds_box.png" alt="Dud&#x27;s Box">
-      <div class="p-content">
-        <span>Combos</span>
-        <h3>Dud&#x27;s Box</h3>
-        <p>Box especial com lanches, batata, onion rings e molhos.</p>
-        <div class="p-bottom">
-          <strong>R$ 70.00</strong>
-          <button onclick="addItem('Dud&#x27;s Box', 70.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Combos">
-      <img src="poster.png" alt="Triplo Box">
-      <div class="p-content">
-        <span>Combos</span>
-        <h3>Triplo Box</h3>
-        <p>Três lanches artesanais, batata, onion rings e molhos especiais.</p>
-        <div class="p-bottom">
-          <strong>R$ 90.00</strong>
-          <button onclick="addItem('Triplo Box', 90.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    
-    <article class="product" data-cat="Combos">
-      <img src="poster.png" alt="Explosão de Cheddar">
-      <div class="p-content">
-        <span>Combos</span>
-        <h3>Explosão de Cheddar</h3>
-        <p>Dois lanches, batata com cheddar, bacon, onion rings e muito cheddar.</p>
-        <div class="p-bottom">
-          <strong>R$ 80.00</strong>
-          <button onclick="addItem('Explosão de Cheddar', 80.00)">Adicionar</button>
-        </div>
-      </div>
-    </article>
-    </div>
-  </section>
-
-  <aside class="cart">
-    <h2>Seu pedido</h2>
-    <div id="cartBox"></div>
-
-    <label>Nome</label>
-    <input id="name" placeholder="Seu nome">
-
-    <label>Endereço</label>
-    <textarea id="address" rows="3" placeholder="Rua, número, bairro e referência"></textarea>
-
-    <label>Entrega</label>
-    <select id="delivery" onchange="renderCart()">
-      <option value="0">Retirar no local - R$ 0</option>
-      <option value="5">Centro Uberaba - R$ 5</option>
-      <option value="7">Bairros próximos - R$ 7</option>
-      <option value="10">Mais distantes - R$ 10</option>
-    </select>
-
-    <label>Pagamento</label>
-    <select id="payment">
-      <option>Pix</option>
-      <option>Dinheiro</option>
-      <option>Cartão</option>
-    </select>
-
-    <label>Observação</label>
-    <textarea id="obs" rows="2" placeholder="Ex: sem cebola, troco, ponto da carne..."></textarea>
-
-    <div class="total" id="total">R$ 0,00</div>
-    <button class="finish" onclick="sendOrder()">Enviar pedido no WhatsApp</button>
-    <button class="clear" onclick="clearCart()">Limpar carrinho</button>
-    <div class="note">Funcionamento: terça a domingo, das 18h às 23h30. Segunda fechado.</div>
-  </aside>
-</main>
-
-<section class="reviews-wrap">
-  <div class="reviews">
-    <h2 style="color:var(--gold2);margin-top:0">O que os clientes falam</h2>
-    <div class="review-grid">
-      <div class="review">⭐⭐⭐⭐⭐<br>“Lanche caprichado e muito saboroso!”</div>
-      <div class="review">⭐⭐⭐⭐⭐<br>“A Dud’s Box é perfeita pra dividir.”</div>
-      <div class="review">⭐⭐⭐⭐⭐<br>“Chegou quentinho e muito bem montado.”</div>
-    </div>
-  </div>
+<section class="menu">
+<div class="tabs">
+<button class="active" onclick="filterCat('Todos', this)">Todos</button>
+<button onclick="filterCat('Promoções', this)">Promoções</button>
+<button onclick="filterCat('Hambúrgueres', this)">Lanches</button>
+<button onclick="filterCat('Acompanhamentos', this)">Acompanhamentos</button>
+<button onclick="filterCat('Combos Box', this)">Combos</button>
+</div>
+<div id="products">
+<div class="product special" data-category="Promoções"><div><h3>🔥 Box do Sucesso</h3><p>Voltou por pedido de vocês: 2 burgers artesanais + batata com cheddar e bacon + onion rings crocante + molhos. Só hoje!</p><strong>R$ 59,90</strong></div><button onclick="addToCart('Box do Sucesso - Promoção', 59.90)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Original</h3><p>Blend 150g, cheddar, bacon, alface, tomate e molho da casa.</p><strong>R$ 20,00</strong></div><button onclick="addToCart('Original', 20.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Chiken Burg</h3><p>Frango, queijo, alface, tomate e molho da casa.</p><strong>R$ 20,00</strong></div><button onclick="addToCart('Chiken Burg', 20.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Burg Simples</h3><p>Blend, queijo, alface, tomate e molho da casa.</p><strong>R$ 15,00</strong></div><button onclick="addToCart('Burg Simples', 15.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Dud's Especial</h3><p>Blend 150g, presunto, mussarela, ovo, alface, tomate e molho da casa.</p><strong>R$ 27,00</strong></div><button onclick="addToCart('Dud\'s Especial', 27.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Dama Smash</h3><p>Burger especial da casa com combinação premium.</p><strong>R$ 37,00</strong></div><button onclick="addToCart('Dama Smash', 37.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Duplo Burg</h3><p>Dois blends, queijo, bacon e molho especial.</p><strong>R$ 40,00</strong></div><button onclick="addToCart('Duplo Burg', 40.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Triplo Burg</h3><p>Três blends, queijo, bacon e molho especial.</p><strong>R$ 45,00</strong></div><button onclick="addToCart('Triplo Burg', 45.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Costela Suprema</h3><p>Blend com costela, queijo e molho especial.</p><strong>R$ 40,00</strong></div><button onclick="addToCart('Costela Suprema', 40.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Onion Rings Burg</h3><p>Blend, queijo, onion rings e molho especial.</p><strong>R$ 35,00</strong></div><button onclick="addToCart('Onion Rings Burg', 35.00)">Adicionar</button></div>
+<div class="product" data-category="Hambúrgueres"><div><h3>Trindade do Bacon</h3><p>Burger especial com muito bacon.</p><strong>R$ 35,00</strong></div><button onclick="addToCart('Trindade do Bacon', 35.00)">Adicionar</button></div>
+<div class="product" data-category="Acompanhamentos"><div><h3>Batata 100g</h3><p>Porção de batata frita crocante.</p><strong>R$ 10,00</strong></div><button onclick="addToCart('Batata 100g', 10.00)">Adicionar</button></div>
+<div class="product" data-category="Acompanhamentos"><div><h3>Batata 300g</h3><p>Porção grande de batata frita.</p><strong>R$ 25,00</strong></div><button onclick="addToCart('Batata 300g', 25.00)">Adicionar</button></div>
+<div class="product" data-category="Acompanhamentos"><div><h3>Batata Cheddar e Bacon 150g</h3><p>Batata com cheddar cremoso e bacon.</p><strong>R$ 15,00</strong></div><button onclick="addToCart('Batata Cheddar e Bacon 150g', 15.00)">Adicionar</button></div>
+<div class="product" data-category="Acompanhamentos"><div><h3>Batata Cheddar e Bacon 300g</h3><p>Porção grande com cheddar e bacon.</p><strong>R$ 35,00</strong></div><button onclick="addToCart('Batata Cheddar e Bacon 300g', 35.00)">Adicionar</button></div>
+<div class="product" data-category="Acompanhamentos"><div><h3>Onion Rings 150g</h3><p>Porção de anéis de cebola crocantes.</p><strong>R$ 15,00</strong></div><button onclick="addToCart('Onion Rings 150g', 15.00)">Adicionar</button></div>
+<div class="product" data-category="Combos Box"><div><h3>Dud's Box</h3><p>Combo box especial Dud's Burgs.</p><strong>R$ 70,00</strong></div><button onclick="addToCart('Dud\'s Box', 70.00)">Adicionar</button></div>
+<div class="product" data-category="Combos Box"><div><h3>Triplo Box</h3><p>Combo box triplo para matar a fome.</p><strong>R$ 90,00</strong></div><button onclick="addToCart('Triplo Box', 90.00)">Adicionar</button></div>
+<div class="product" data-category="Combos Box"><div><h3>Explosão de Cheddar</h3><p>Combo box com muito cheddar.</p><strong>R$ 80,00</strong></div><button onclick="addToCart('Explosão de Cheddar', 80.00)">Adicionar</button></div>
+</div>
 </section>
-
-<a class="float" href="https://wa.me/5534998889817" target="_blank">WhatsApp</a>
-
-<footer>
-  Dud's Burgs • Uberaba MG • Instagram: @duds_burgs
-</footer>
-
+<aside class="cart" id="pedido"><h2>Seu pedido</h2><div id="cartItems"></div><label>Nome</label><input id="customerName" placeholder="Seu nome"><label>Endereço</label><textarea id="address" rows="3" placeholder="Rua, número, bairro e referência"></textarea><label>Taxa de entrega</label><select id="delivery" onchange="renderCart()"><option value="0">Retirar no local - R$ 0</option><option value="5">Centro Uberaba - R$ 5</option><option value="7">Bairros próximos - R$ 7</option><option value="10">Mais distantes - R$ 10</option></select><label>Pagamento</label><select id="payment"><option>Pix</option><option>Cartão</option></select><label>Observação</label><textarea id="obs" rows="2" placeholder="Ex: sem cebola, ponto da carne..."></textarea><div class="total" id="total">R$ 0,00</div><button class="finish" onclick="sendOrder()">Enviar pedido no WhatsApp</button><button class="clear" onclick="clearCart()">Limpar carrinho</button><div class="note">Ao finalizar, seu pedido será enviado para o WhatsApp da Dud's Burgs.</div></aside>
+</main>
+<a class="whats-fixed" href="https://wa.me/5534998889817" target="_blank">WhatsApp</a><footer>© Dud's Burgs • Uberaba MG</footer>
 <script>
-let cart=[];
-function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
-function addItem(name,price){
-  const item=cart.find(x=>x.name===name);
-  if(item) item.qty++;
-  else cart.push({name,price,qty:1});
-  renderCart();
-}
-function removeItem(name){
-  const item=cart.find(x=>x.name===name);
-  if(!item)return;
-  item.qty--;
-  if(item.qty<=0) cart=cart.filter(x=>x.name!==name);
-  renderCart();
-}
-function clearCart(){cart=[];renderCart()}
-function subtotal(){return cart.reduce((s,i)=>s+i.price*i.qty,0)}
-function renderCart(){
-  const box=document.getElementById('cartBox');
-  box.innerHTML='';
-  if(cart.length===0) box.innerHTML='<p class="note">Seu carrinho está vazio.</p>';
-  cart.forEach(i=>{
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`<span>${i.qty}x ${i.name}<br><small>${money(i.price*i.qty)}</small></span><button onclick="removeItem('${i.name}')">-</button>`;
-    box.appendChild(div);
-  });
-  const delivery=Number(document.getElementById('delivery').value||0);
-  document.getElementById('total').innerText=money(subtotal()+delivery);
-}
-function sendOrder(){
-  if(cart.length===0){alert('Adicione pelo menos um item ao carrinho.');return}
-  const name=document.getElementById('name').value.trim();
-  const address=document.getElementById('address').value.trim();
-  const deliverySelect=document.getElementById('delivery');
-  const deliveryFee=Number(deliverySelect.value);
-  const deliveryText=deliverySelect.options[deliverySelect.selectedIndex].text;
-  const payment=document.getElementById('payment').value;
-  const obs=document.getElementById('obs').value.trim();
-  let msg=`Novo pedido Dud's Burgs 🍔%0A%0A`;
-  cart.forEach(i=>{msg+=`${i.qty}x ${i.name} - ${money(i.price*i.qty)}%0A`});
-  msg+=`%0ASubtotal: ${money(subtotal())}`;
-  msg+=`%0AEntrega: ${deliveryText}`;
-  msg+=`%0ATotal: ${money(subtotal()+deliveryFee)}`;
-  msg+=`%0A%0ANome: ${name||'-'}`;
-  msg+=`%0AEndereço: ${address||'-'}`;
-  msg+=`%0APagamento: ${payment}`;
-  msg+=`%0AObservação: ${obs||'-'}`;
-  window.open(`https://wa.me/5534998889817?text=${msg}`,'_blank');
-}
-function filterProducts(cat,btn){
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.product').forEach(p=>{
-    p.style.display=(cat==='Todos'||p.dataset.cat===cat)?'block':'none';
-  });
-}
-renderCart();
-</script>
-</body>
-</html>
+let cart=[];function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}function safeName(n){return n.replace(/'/g,"\\'");}function addToCart(name,price){const found=cart.find(i=>i.name===name);if(found)found.qty++;else cart.push({name,price,qty:1});renderCart();}function removeOne(name){const found=cart.find(i=>i.name===name);if(!found)return;found.qty--;if(found.qty<=0)cart=cart.filter(i=>i.name!==name);renderCart();}function clearCart(){cart=[];renderCart();}function subtotal(){return cart.reduce((sum,i)=>sum+i.price*i.qty,0);}function renderCart(){const box=document.getElementById('cartItems');box.innerHTML='';if(cart.length===0){box.innerHTML='<p class="note">Seu carrinho está vazio.</p>';}else{cart.forEach(i=>{const div=document.createElement('div');div.className='cart-item';div.innerHTML=`<span>${i.qty}x ${i.name}<br><small>${money(i.price*i.qty)}</small></span><button onclick="removeOne('${safeName(i.name)}')">-</button>`;box.appendChild(div);});}const delivery=Number(document.getElementById('delivery').value||0);document.getElementById('total').innerText=money(subtotal()+delivery);}function sendOrder(){if(cart.length===0){alert('Adicione pelo menos um item ao carrinho.');return;}const name=document.getElementById('customerName').value.trim();const address=document.getElementById('address').value.trim();const deliverySelect=document.getElementById('delivery');const deliveryFee=Number(deliverySelect.value);const deliveryText=deliverySelect.options[deliverySelect.selectedIndex].text;const payment=document.getElementById('payment').value;const obs=document.getElementById('obs').value.trim();let msg=`Novo pedido Dud's Burgs 🍔%0A%0A`;cart.forEach(i=>{msg+=`${i.qty}x ${i.name} - ${money(i.price*i.qty)}%0A`;});msg+=`%0ASubtotal: ${money(subtotal())}`;msg+=`%0AEntrega: ${deliveryText}`;msg+=`%0ATotal: ${money(subtotal()+deliveryFee)}`;msg+=`%0A%0ANome: ${name||'-'}`;msg+=`%0AEndereço: ${address||'-'}`;msg+=`%0APagamento: ${payment}`;msg+=`%0AObservação: ${obs||'-'}`;window.open(`https://wa.me/5534998889817?text=${msg}`,'_blank');}function filterCat(cat,btn){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.product').forEach(p=>{p.style.display=(cat==='Todos'||p.dataset.category===cat)?'flex':'none';});}renderCart();
+</script></body></html>
